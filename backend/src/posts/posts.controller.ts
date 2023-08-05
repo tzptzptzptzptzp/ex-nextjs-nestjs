@@ -1,4 +1,11 @@
-import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Param,
+  ParseIntPipe,
+  Body,
+} from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { POST } from './post.entity';
 
@@ -14,5 +21,10 @@ export class PostsController {
   @Get(':id')
   findOne(@Param('id', ParseIntPipe) id: number): Promise<POST> {
     return this.postsService.findOne(id);
+  }
+
+  @Post()
+  create(@Body() post: POST): Promise<POST> {
+    return this.postsService.create(post);
   }
 }
