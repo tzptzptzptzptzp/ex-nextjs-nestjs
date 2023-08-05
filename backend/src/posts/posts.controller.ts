@@ -5,6 +5,7 @@ import {
   Param,
   ParseIntPipe,
   Body,
+  Put,
 } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { POST } from './post.entity';
@@ -26,5 +27,10 @@ export class PostsController {
   @Post()
   create(@Body() post: POST): Promise<POST> {
     return this.postsService.create(post);
+  }
+
+  @Put(':id')
+  update(@Param('id') id: number, @Body() post: POST): Promise<POST> {
+    return this.postsService.update(id, post);
   }
 }
