@@ -2,7 +2,7 @@ require('dotenv').config();
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: process.env.TABLE_NAME })
-export class Post {
+export class POST {
   @PrimaryGeneratedColumn()
   id: number;
 
