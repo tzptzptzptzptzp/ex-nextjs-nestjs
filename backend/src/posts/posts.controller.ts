@@ -6,6 +6,7 @@ import {
   ParseIntPipe,
   Body,
   Put,
+  Delete,
 } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { POST } from './post.entity';
@@ -32,5 +33,10 @@ export class PostsController {
   @Put(':id')
   update(@Param('id') id: number, @Body() post: POST): Promise<POST> {
     return this.postsService.update(id, post);
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: number): Promise<void> {
+    return this.postsService.remove(id);
   }
 }

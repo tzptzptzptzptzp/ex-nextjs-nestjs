@@ -26,4 +26,8 @@ export class PostsService {
     await this.postsRepository.update(id, post);
     return this.findOne(id);
   }
+
+  async remove(id: number): Promise<void> {
+    await this.postsRepository.delete(id);
+  }
 }
