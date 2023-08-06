@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import { Postlist } from '../src/components/postlist'
+import { PostType } from '../src/types/PostType'
 
 export const getServerSideProps = async () => {
   const response = await fetch('http://localhost:5000/posts/')
@@ -10,7 +12,11 @@ export const getServerSideProps = async () => {
   }
 }
 
-export default function Home() {
+interface PostlistProps {
+  data: PostType[]
+}
+
+export default function Home({ data }: PostlistProps) {
   return (
     <div className='flex items-center justify-center'>
       <Head>
@@ -21,6 +27,7 @@ export default function Home() {
 
       <main className='w-4/5'>
         <h1 className='my-8 px-8 py-4 rounded-xl text-3xl text-center' style={{ boxShadow: '0px 5px 15px -5px #b0b0b0' }}>Next.js & Nest.js Blog</h1>
+        <Postlist data={data}></Postlist>
       </main>
 
     </div>
