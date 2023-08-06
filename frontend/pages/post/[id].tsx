@@ -1,7 +1,24 @@
 import Head from 'next/head'
 import React from 'react'
+import { PostType } from '../../src/types/PostType'
+import { GetServerSideProps } from 'next'
 
-export default function Post() {
+interface PostPageProps {
+  data: PostType
+}
+
+export const getServerSideProps: GetServerSideProps<PostPageProps> = async ({ params }) => {
+  const { id } = params as { id: string }
+  const response = await fetch(`http://localhost:5000/posts/${id}`)
+  const data = await response.json()
+  return {
+    props: {
+      data: data
+    }
+  }
+}
+
+export default function Post({ data }: PostPageProps) {
   return (
     <div className='flex items-center justify-center h-screen'>
       <Head>
