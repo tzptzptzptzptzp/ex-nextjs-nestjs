@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { PostType } from '../types/PostType';
 
 interface PostlistProps {
@@ -17,11 +18,13 @@ export function Post({ data }: PostlistProps) {
   return (
     <>
       <li className='px-8 py-4 rounded-xl' style={{ boxShadow: '0px 5px 15px -5px #b0b0b0' }}>
-        <h2 className='mb-2 text-2xl text-center'>{data.title}</h2>
-        <div className='flex items-center justify-between text-sm'>
-          <p>{formattedDate}</p>
-          <p>{data.published === 0 ? '非公開' : '公開'}</p>
-        </div>
+        <Link href={`/post/${data.id}`}>
+          <h2 className='mb-2 text-2xl text-center'>{data.title}</h2>
+          <div className='flex items-center justify-between text-sm'>
+            <p>{formattedDate}</p>
+            <p>{data.published === 0 ? '非公開' : '公開'}</p>
+          </div>
+        </Link>
       </li>
     </>
   )
