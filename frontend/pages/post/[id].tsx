@@ -9,12 +9,24 @@ interface PostPageProps {
 }
 
 export const getServerSideProps: GetServerSideProps<PostPageProps> = async ({ params }) => {
-  const { id } = params as { id: string }
-  const response = await fetch(`http://localhost:5000/posts/${id}`)
-  const data = await response.json()
-  return {
-    props: {
-      data: data
+  try {
+    const { id } = params as { id: string }
+    const response = await fetch(`http://localhost:5000/posts/${id}`)
+    if (!response.ok) {
+      return {
+        notFound: true
+      }
+    }
+    const data = await response.json()
+    return {
+      props: {
+        data: data
+      }
+    }
+  } catch (err) {
+    console.error('Error fetching data:', err);
+    return {
+      notFound: true
     }
   }
 }

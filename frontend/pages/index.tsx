@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { Postlist } from '../src/components/postlist'
+import { Form } from '../src/components/form'
 import { PostType } from '../src/types/PostType'
 
 export const getServerSideProps = async () => {
@@ -27,6 +28,7 @@ export default function Home({ data }: PostlistProps) {
 
       <main className='w-4/5'>
         <h1 className='my-8 px-8 py-4 rounded-xl text-3xl text-center' style={{ boxShadow: '0px 5px 15px -5px #b0b0b0' }}>Next.js & Nest.js Blog</h1>
+        <Form></Form>
         <Postlist data={data}></Postlist>
       </main>
 
