@@ -3,25 +3,30 @@ import React, { useState } from 'react'
 export function Form() {
   const [title, setTitle] = useState('')
   const [published, setPublished] = useState(1)
+  const [isEmpty, setIsEmpty] = useState(false)
   const [isSuccess, setIsSuccess] = useState('')
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    try {
-      const response = await fetch('http://localhost:5000/posts/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ title, published })
-      })
-      if (response.ok) {
-        setIsSuccess('success')
-      } else {
-        setIsSuccess('failed')
+    if (title) {
+      try {
+        const response = await fetch('http://localhost:5000/posts/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ title, published })
+        })
+        if (response.ok) {
+          setIsSuccess('success')
+        } else {
+          setIsSuccess('failed')
+        }
+      } catch (err) {
+        console.error('Error posting data:', err)
       }
-    } catch (err) {
-      console.error('Error posting data:', err)
+    } else {
+      setIsEmpty(true)
     }
   }
   return (
@@ -34,6 +39,9 @@ export function Form() {
         </select>
         <button type="submit" className='px-4 py-1 border'>投稿</button>
       </form>
+      {isEmpty === true ? (
+        <p className='text-center'>入力に誤りがあります！</p>
+      ) : null}
       {isSuccess === 'success' ? (
         <p className='text-center'>記事の投稿に成功しました！</p>
       ) : isSuccess === 'failed' ? (
