@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export function Form() {
+export function Form({ onSubmitSuccess }: { onSubmitSuccess: () => void }) {
   const [title, setTitle] = useState('')
   const [published, setPublished] = useState(1)
   const [isEmpty, setIsEmpty] = useState(false)
@@ -22,6 +22,7 @@ export function Form() {
           setIsEmpty(false)
           setTitle('')
           setPublished(1)
+          onSubmitSuccess()
         } else {
           setIsSuccess('failed')
         }
