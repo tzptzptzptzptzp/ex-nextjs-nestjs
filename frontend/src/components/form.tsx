@@ -19,6 +19,9 @@ export function Form() {
         })
         if (response.ok) {
           setIsSuccess('success')
+          setIsEmpty(false)
+          setTitle('')
+          setPublished(1)
         } else {
           setIsSuccess('failed')
         }
