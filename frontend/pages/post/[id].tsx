@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { GetServerSideProps } from 'next'
 import { PostType } from '../../src/types/PostType'
+import { DeleteBtn } from '../../src/components/deleteBtn'
 
 interface PostPageProps {
   data: PostType
@@ -49,12 +50,13 @@ export default function Post({ data }: PostPageProps) {
       </Head>
 
       <main className='w-2/5'>
-        <div className='mb-6 px-8 py-4 rounded-xl' style={{ boxShadow: '0px 5px 15px -5px #b0b0b0' }}>
+        <div className='relative mb-6 px-8 py-4 rounded-xl' style={{ boxShadow: '0px 5px 15px -5px #b0b0b0' }}>
           <h2 className='mb-8 text-2xl text-center'>{data.title}</h2>
           <div className='flex items-center justify-between text-sm'>
             <p>{formattedDate}</p>
             <p>{data.published === 0 ? '非公開' : '公開'}</p>
           </div>
+          <DeleteBtn postId={data.id}></DeleteBtn>
         </div>
         <div className='w-full text-center'>
           <Link href='/' className='text-xl hover:opacity-50 duration-300'>
