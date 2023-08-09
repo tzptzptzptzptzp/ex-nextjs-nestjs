@@ -33,6 +33,7 @@ export function Form({ onSubmitSuccess }: { onSubmitSuccess: () => void }) {
       setIsEmpty(true)
     }
   }
+
   return (
     <div className='flex flex-col gap-4 mb-8 px-8 py-4 rounded-xl' style={{ boxShadow: '0px 5px 15px -5px #b0b0b0' }}>
       <form onSubmit={handleSubmit} className='flex justify-center gap-4 w-full'>
