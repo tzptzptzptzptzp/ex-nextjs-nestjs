@@ -17,8 +17,8 @@ export function Post({ data }: PostlistProps) {
   }).format(new Date(data.created_at))
   return (
     <>
-      <li className='px-8 py-4 rounded-xl' style={{ boxShadow: '0px 5px 15px -5px #b0b0b0' }}>
-        <Link href={`/post/${data.id}`}>
+      <li className='min-h-[8rem] px-8 py-4 rounded-xl' style={{ boxShadow: '0px 5px 15px -5px #b0b0b0' }}>
+        <Link href={`/post/${data.id}`} className='flex flex-col justify-between h-full'>
           <h2 className='mb-2 text-2xl text-center'>{data.title}</h2>
           <div className='flex items-center justify-between text-sm'>
             <p>{formattedDate}</p>
