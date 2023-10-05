@@ -32,3 +32,44 @@ npm run dev // 開発用サーバー起動
 npm
 npm start // APIサーバー起動
 ```
+
+---
+
+## Introduction
+
+This is a simple bulletin board system.  
+For the front-end, we use Next.js, and for the back-end, we employ Nest.js.  
+The API is designed to handle CRUD operations based on different endpoints.  
+We have also implemented a graphical user interface in the browser to perform these operations.
+
+## Technologies Used
+
+Front-end
+
+- [Next.js](https://nextjs.org/)
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+
+Back-end
+
+- [Nest.js](https://nestjs.com/)
+- [MySQL](https://www.mysql.com/)
+
+## Development Process
+
+We use npm for package management.
+
+**Front-end:**
+
+```bash
+npm install
+npm run dev // Start the development server
+```
+
+**Back-end:**
+
+```bash
+npm install
+npm start // Start the API server
+```
